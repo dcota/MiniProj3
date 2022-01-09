@@ -1,10 +1,17 @@
-const mongodb = require('mongoose')
+/*
+MEIW - Programação Web Avançada
+Auhtor: Duarte Cota
+Description: return db connection
+*/
+
+const mongoDB = require('mongoose')
 require('dotenv').config({ path: './private/.env' })
+const config = require('../config/config')
 
 class MongoConnection {
     constructor(){
      if(! MongoConnection.mongoInstance){
-        const connection = mongodb.connect(process.env.MONGOURL, {
+        const connection = mongoDB.connect(config.mongodb.uri, {
             useNewUrlParser: true, 
             useUnifiedTopology: true}, (err)=>{
             if(err){
